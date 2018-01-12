@@ -52,20 +52,30 @@ var produtos = [
 function listarProdutos(){
  //Gerar o template através do array de objetos
     var template = "";
-    
+    var total = 0;
+        
     for(var i = 0; i < produtos.length; i++){
         console.log( produtos[i] );
+
+        var subtotal = multiplicar(produtos[i].preco, produtos[i].qtd);
+        total = total + subtotal;
+
         template += '<div class="product">';
         template +=     '<i class="fa fa-times-circle"></i>';
-        template +=     '<img src="' +produtos[i].imagem.src+ '" alt="t-shirt" class="product__img">';
+        template +=     '<img src="' +produtos[i].imagem.src+ '" alt="' +produtos[i].imagem.alt+ '" class="product__img">';
         template +=     '<span id="p1" class="product__name">'+produtos[i].descricao+'</span>';
         template +=     '<span id="c1" class="product__color">'+produtos[i].cor+'</span>';
         template +=     '<span id="s1" class="product__size"></span>';
-        template +=     '<span id="v1" class="product__value"><strong>R$ </strong>'+produtos[i].preco+'</span>*<input type="number"  value="'+produtos[i].qtd+'" name="" id=""> = <span> <strong>R$ </strong>'+(produtos[i].qtd * produtos[i].preco)+'</span>';
+        template +=     '<span id="v1" class="product__value";"><strong>R$ </strong>'+produtos[i].preco+'</span>*<input type="number";" value="'+produtos[i].qtd+'" name="" id=""> = <span> <strong>R$ </strong>'+subtotal+'</span>';
         template += '</div>';
     }
 
     document.getElementById("products").innerHTML = template;
+    document.getElementById("totalcart").innerHTML = '<p>Subtotal:'+total+'</p>';
+}
+
+function multiplicar (_preco, _quantidade) {
+    return _preco*_quantidade;
 }
 
 function validaSexo(_id){
