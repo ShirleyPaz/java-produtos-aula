@@ -58,3 +58,45 @@ html, body{
     height: auto;
     display: block;
 }
+
+.shipping-linha{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.esquerda{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.direita{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+
+.inputs{
+    width: 300px;
+    margin-bottom: 5px;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.shipping{
+    width: 50%;
+    height: auto;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid black
+}
