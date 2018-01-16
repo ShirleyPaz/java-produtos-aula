@@ -9,6 +9,8 @@ var dadosCliente = {
 };
 
 function validarFormulario() {
+
+    event.preventDefault();
     // gerar objeto endereco
     objEndereco = {
         pais : document.getElementById('selection_country').value,
@@ -17,28 +19,30 @@ function validarFormulario() {
         zip: document.getElementById('zip').value,
         ad1: document.getElementById('ad1').value,
         ad2: document.getElementById('ad2').value,
-    }
+    };
     
     dadosCliente.endereco = objEndereco;
-    console.log(objEndereco);
-
    // gerar objeto contato
    objContato = {
         nome : document.getElementById('name').value,
         sobrenome: document.getElementById('lastname').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
-   }
+   };
     
     dadosCliente.contato = objContato;
-    console.log(objContato);
 
-function validarEndereco(_objEndereco) {
+    console.log(dadosCliente);
+}
+
+
+function validarEndereco(_objEndereco){
+    // Validar se os campos estão preenchidos
 
     
 }
 
-function validarContato(objContato) {
+function validarContato(_objContato){
 
-    
+
 }
