@@ -10,7 +10,7 @@ var produtos = [
         descricao: 'Puma Golf Raglan Tech Polo Tee',
         cor: 'Purple',
         preco: 72,
-        qtd: 3,
+        qtd: 3
     },
     {//1
         codigo: 99,
@@ -55,56 +55,46 @@ function listarProdutos() {
     var totalGeral = 0;
 
     for (var i = 0; i < produtos.length; i++) {
-        console.log(produtos[i]);
 
-        var totalProduto = produtos[i].preco * produtos[i].qtd;
+        var totalProduto = produtos[i].qtd * produtos[i].preco;
         totalGeral += totalProduto;
 
         template += '<div class="product">';
         template += '<i class="fa fa-times-circle"></i>';
-        template += '<img src="' + produtos[i].imagem.src + '" alt="' + produtos[i].imagem.alt + '" class="product__img">';
+        template += '<img src="' + produtos[i].imagem.src + '" alt="t-shirt" class="product__img">';
         template += '<span id="p1" class="product__name">' + produtos[i].descricao + '</span>';
         template += '<span id="c1" class="product__color">' + produtos[i].cor + '</span>';
         template += '<span id="s1" class="product__size"></span>';
-        template += '<span id="v1" class="product__value"><strong>R$ </strong>' + produtos[i].preco + '</span><input type="number" onchange="atualizarQtd(this.id, this.value)" value="' + produtos[i].qtd + '"id="' + produtos[i].codigo + '" name="" id=""> = <span id="total-' + produtos[i].codigo + '"> <strong>R$ </strong>' + totalProduto + '</span>';
+        template += '<span id="v1" class="product__value"><strong>R$ </strong>' + produtos[i].preco + '</span>*<input type="number" onchange="atualizarQuantidade(this.id, this.value)" value="' + produtos[i].qtd + '" name="" id="' + produtos[i].codigo + '"> = <strong>R$ </strong><span id="total-' + produtos[i].codigo + '">' + totalProduto + '</span>';
         template += '</div>';
     }
 
     document.getElementById("products").innerHTML = template;
-    document.getElementById("totalcart").innerHTML = '<p>Subtotal:<strong>R$ ' + totalGeral + '</strong></p>';
+    document.getElementById("total-geral").innerHTML = totalGeral;
+    //  R$523
 }
 
-function atualizarQtd(_codigo, _qtd) {
+function atualizarQuantidade(_codigo, _qtd) {
+    var totalGeral = parseFloat(document.getElementById("total-geral").innerHTML);
     for (var index = 0; index < produtos.length; index++) {
+
         if (produtos[index].codigo == _codigo) {
             //atualizar a quantidade
             produtos[index].qtd = _qtd;
-            //atualizar totalproduto
-            var totalProduto = produtos[index].qtd * produtos[index].preco;
+
+            //atualizar o total do produto
+            var novoTotal = parseFloat(produtos[index].qtd * produtos[index].preco);
             var codProd = 'total-' + produtos[index].codigo;
-            document.getElementById(codProd).innerHTML = "<strong>R$" + totalProduto + "</strong>";          
-            //atualizar totalGeral
-        console.log(produtos[index]);
-        break;
+            var totalAntigo = document.getElementById(codProd).innerHTML;
+            console.log(totalAntigo);
+            totalGeral = (totalGeral - totalAntigo) + novoTotal;    
+
+            document.getElementById(codProd).innerHTML = novoTotal.toFixed(2);
+            document.getElementById('total-geral').innerHTML = totalGeral;
+            //atualizar o total geral
+            // (TOTAL-GERAL - TOTAL-PRODUTO ANTIGO)+ NOVO TOTAL-PRODUTO
+             break;
         }
+
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* function validaSexo(_id){
-    alert(_id);
-} */

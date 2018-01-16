@@ -17,7 +17,7 @@
     </header> -->
     <main>
         <section>
-                <div class="name__info">
+                  <div class="name__info">
                     <span class="title__cart title__cart--modify">Name</span>
                     <span class="title__cart">Price</span>
                     <span class="title__cart">Quantity</span>
@@ -27,11 +27,33 @@
             <div id="products"></div>
 
             <div>
-                <span id="totalcart"></span>
+                Subtotal: <strong>R$ <span id="total-geral"></span></strong>
                 <span><i></i> Continue Shopping</span>
                 <button type="submit">Shipping Info</button>
             </div>
             <div class="clear"></div>
+        </section>
+        <section>
+            
+            <form class="shipping-ad">
+                <div>
+                <p>Contact Info<p>   
+                <input type="text" name="country" placeholder="Country" autocomplete="">
+                <input type="text" name="city" placeholder="City" autocomplete="">
+                <input type="text" name="state" placeholder="State/Region/Province" autocomplete="">
+                <input type="text" name="zip-code" placeholder="Zip Code" autocomplete="">
+                <input type="text" name="address1" placeholder="Adress1" autocomplete="">
+                <input type="text" name="address2" placeholder="Adress2" autocomplete="">
+                </div>
+                <div>
+                <p>Shipping address<p>   
+                <input type="text" name="first-name" placeholder="First Name" autocomplete="">
+                <input type="text" name="last-name" placeholder="Last Name" autocomplete="">
+                <input type="email" name="email" placeholder="E-mail" autocomplete="">
+                <input type="tel" name="hone" placeholder="Phone" autocomplete="">
+                </div>
+
+            </form>
         </section>
     </main>
     <script src="js/carrinho.js"></script>
